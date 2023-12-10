@@ -1,0 +1,38 @@
+<mat-card *ngIf="countryDetailsInfo != null">
+    <mat-card-header>
+        <img mat-card-avatar [src]="countryDetailsInfo.flags.png" [alt]="countryDetailsInfo.flags.alt">
+        <mat-card-title>{{countryDetailsInfo.name.official}}</mat-card-title>
+        <mat-card-subtitle>{{countryDetailsInfo.name.common}}</mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content>
+        <mat-list>
+            <mat-list-item>
+                <span matListItemTitle>Capital: </span>
+                <b>{{countryDetailsInfo.capital}}</b>
+            </mat-list-item>
+            <mat-list-item>
+                <span matListItemTitle>Region: </span>
+                <b>{{countryDetailsInfo.region}}</b>
+            </mat-list-item>
+            <mat-list-item>
+                <span matListItemTitle>Currencies: </span>
+                <span *ngFor="let item of countryDetailsInfo.currencies | keyvalue">
+                    <b>{{$any(item.value).symbol}}</b> - {{$any(item.value).name}}&nbsp;&nbsp;
+                </span>
+            </mat-list-item>
+            <mat-list-item>
+                <span matListItemTitle>Languages: </span>
+                <span *ngFor="let item of countryDetailsInfo.languages| keyvalue">
+                    <b>{{item.key}}</b> - {{item.value}}&nbsp;&nbsp;
+                </span>
+            </mat-list-item>
+        </mat-list>
+    </mat-card-content>
+    <mat-card-actions>
+        <a mat-button (click)="NavigateToList()">Back to list</a>
+        <a mat-button [href]="countryDetailsInfo.maps.googleMaps" target="_blank">Google Map</a>&nbsp;&nbsp;
+        <a mat-button [href]="countryDetailsInfo.maps.openStreetMaps" target="_blank">Opet street map</a>
+    </mat-card-actions>
+</mat-card>
+<mat-spinner *ngIf="countryDetailsInfo == null"></mat-spinner>

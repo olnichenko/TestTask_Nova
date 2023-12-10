@@ -1,0 +1,48 @@
+<table mat-table [dataSource]="countries" *ngIf="!showLoader" class="mat-elevation-z8">
+
+    <ng-container matColumnDef="name" >
+        <th mat-header-cell *matHeaderCellDef >Name</th>
+        <td mat-cell *matCellDef="let element">
+            <a href="#" [routerLink]="['/country', element.name.common]" matTooltipPosition="above" matTooltip="{{element.name.official}}">
+                {{element.name.common}} 
+            </a>
+        </td>
+    </ng-container>
+
+    <ng-container matColumnDef="capital">
+        <th mat-header-cell *matHeaderCellDef>Capital</th>
+        <td mat-cell *matCellDef="let element">
+            <span *ngFor="let item of element.capital;">
+                {{item }}
+            </span>
+        </td>
+    </ng-container>
+
+    <ng-container matColumnDef="currencies">
+        <th mat-header-cell *matHeaderCellDef>Currencies</th>
+        <td mat-cell *matCellDef="let element">
+            <span *ngFor="let item  of element.currencies | keyvalue" matTooltipPosition="above" matTooltip="{{$any(item.value).name}}">
+                <b style="text-decoration: underline;">{{$any(item.value).symbol}}</b>&nbsp;&nbsp;
+            </span>
+        </td>
+    </ng-container>
+
+    <ng-container matColumnDef="languages">
+        <th mat-header-cell *matHeaderCellDef>Languages</th>
+        <td mat-cell *matCellDef="let element">
+            <span *ngFor="let item of element.languages | keyvalue;"  matTooltipPosition="above" matTooltip="{{item.value}}">
+                <b style="text-decoration: underline;">{{item.key}}</b>&nbsp;&nbsp;
+            </span>
+        </td>
+    </ng-container>
+
+    <ng-container matColumnDef="region">
+        <th mat-header-cell *matHeaderCellDef>Region</th>
+        <td mat-cell *matCellDef="let element">{{element.region}}</td>
+    </ng-container>
+   
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  <mat-spinner *ngIf="showLoader"></mat-spinner>
