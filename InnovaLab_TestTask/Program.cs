@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Diagnostics;
 
 Log.Logger = new LoggerConfiguration()
 	.MinimumLevel.Debug()
-	.WriteTo.File("log.txt", rollingInterval: RollingInterval.Day)
+	.WriteTo.File("logs/log.txt", rollingInterval: RollingInterval.Day)
 	.CreateLogger();
 
 var builder = WebApplication.CreateBuilder(args);

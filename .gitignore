@@ -1,0 +1,8 @@
+/.vs/
+/innovaLab_angularApp/.angular/
+/innovaLab_angularApp/node_modules/
+/InnovaLab_TestTask/bin/
+/InnovaLab_TestTask/obj/
+/UnitTests/obj/
+/UnitTests/bin/
+/InnovaLab_TestTask/logs/
