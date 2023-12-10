@@ -51,3 +51,4 @@ What would I change if this was a real project?
 - ![Screenshot_8](https://github.com/olnichenko/TestTask_Nova/assets/2253261/1d89a62b-5407-4dc7-ada0-6fac3aca4d8a)
 - I would add docker support for projects
 - I would create separate containers for cache, api, logger...
+- Add Logging for client application/
